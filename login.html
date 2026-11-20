@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RS.GAMES | Player Login</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #080d18;
+    font-family: Arial, sans-serif;
+    color: white;
+    padding: 20px;
+}
+
+.card {
+    width: 100%;
+    max-width: 420px;
+    background: #121c2e;
+    border: 1px solid #263650;
+    border-radius: 18px;
+    padding: 35px;
+    text-align: center;
+    box-shadow: 0 0 35px rgba(22, 140, 255, 0.12);
+}
+
+.logo {
+    color: #168cff;
+    font-size: 34px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 25px;
+    margin-top: 25px;
+}
+
+p {
+    color: #aab5c8;
+    line-height: 1.6;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #34445f;
+    background: #080d18;
+    color: white;
+    font-size: 16px;
+    margin-top: 20px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #168cff;
+}
+
+button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: #168cff;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #006bd6;
+}
+
+#error {
+    color: #ff6b6b;
+    min-height: 20px;
+    font-size: 14px;
+}
+
+.footer {
+    font-size: 12px;
+    margin-top: 25px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="logo">RS.GAMES</div>
+
+    <h1>Welcome, Player!</h1>
+
+    <p>Choose a gaming nickname to enter the world of RS.GAMES.</p>
+
+    <form id="loginForm">
+        <input
+            type="text"
+            id="nickname"
+            placeholder="Enter your nickname"
+            maxlength="20"
+            autocomplete="off"
+            required
+        >
+
+        <button type="submit">ENTER RS.GAMES</button>
+    </form>
+
+    <p id="error"></p>
+
+    <p class="footer">
+        Use a nickname, not your real name or personal information.
+    </p>
+
+</div>
+
+<script>
+const form = document.getElementById("loginForm");
+const nicknameInput = document.getElementById("nickname");
+const error = document.getElementById("error");
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const nickname = nicknameInput.value.trim();
+
+    if (nickname.length < 2) {
+        error.textContent = "Nickname must be at least 2 characters.";
+        return;
+    }
+
+    localStorage.setItem("rsGamesNickname", nickname);
+
+    window.location.href = "snake.html";
+});
+</script>
+
+</body>
+</html>
